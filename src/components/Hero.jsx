@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import { useMovie } from "../hooks/useMovie";
 import { useNavigate } from "react-router-dom";
 import { useWatchList } from "../hooks/useWatchList";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Hero = memo(() => {
   const { nowPlaying } = useMovie();
   const { addToWatchList, isInWatchList } = useWatchList();
+
+  const {isAuthenticated} = useAuth0();
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -58,9 +61,12 @@ const Hero = memo(() => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              if (!added) {
-                addToWatchList(currentMovie);
+              if (!isAuthenticated) {
+                navigate("/watchlist");
+                return;
               }
+
+              addToWatchList(currentMovie);
             }}
             className="px-3 py-1 md:px-4 md:py-2 text-sm md:text-base bg-(--background-color) rounded-full active:scale-95"
           >

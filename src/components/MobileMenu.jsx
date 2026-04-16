@@ -25,7 +25,7 @@ const MobileMenu = ({ active, setActive }) => {
           <X />
         </button>
         {isAuthenticated ? (
-          <div className="flex flex-col gap-2 px-2">
+          <div className="flex flex-col gap-5 px-2">
             <img
               className="max-w-10 max-h-10 rounded-full"
               src={user?.picture}
@@ -43,7 +43,7 @@ const MobileMenu = ({ active, setActive }) => {
             </button>
           </div>
         ) : (
-          <div className="flex flex-col gap-2 px-2">
+          <div className="flex flex-col gap-5 px-2">
             <NavLinks onClick={() => setActive(false)} />
             <button
               onClick={() => {

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMovie } from "../hooks/useMovie";
 import { useWatchList } from "../hooks/useWatchList";
 import Video from "./Video";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -14,10 +15,13 @@ const MovieDetails = () => {
     setMovieVideo,
   } = useMovie();
   const { addToWatchList, isInWatchList } = useWatchList();
+  const { isAuthenticated } = useAuth0();
 
   const [videoKey, setVideoKey] = useState(null);
 
   const added = movieDetails ? isInWatchList(movieDetails?.id) : false;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleMovieDetails(id);
@@ -76,9 +80,12 @@ const MovieDetails = () => {
           </button>
           <button
             onClick={async () => {
-              if (!added) {
-                addToWatchList(movieDetails);
+              if (!isAuthenticated) {
+                navigate("/watchlist");
+                return;
               }
+
+              addToWatchList(movieDetails);
             }}
             className="px-3 py-1 md:px-4 md:py-2 text-sm md:text-base bg-(--background-color) rounded-full active:scale-95"
           >
