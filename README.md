@@ -1,16 +1,81 @@
-# React + Vite
+# 🎬 MovieVerse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MovieVerse is a **React-based movie discovery app** where users can explore trending movies, search for titles, watch trailers, and manage a personalized watchlist with authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+* 🔍 **Search Movies** – Real-time movie search
+* 🎥 **Movie Details Page** – View complete information about a movie
+* ▶️ **Watch Trailer** – Play trailers inside the app
+* ⭐ **Personal Watchlist** – Save movies (requires login)
+* 🔐 **Authentication (Auth0)** – Secure login/logout functionality
+* 📱 **Responsive UI** – Optimized for all devices
+* ⚡ **Smooth Performance** – Optimized React hooks & state management
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React (Vite)
+* **Styling:** Tailwind CSS
+* **State Management:** Context API
+* **Authentication:** Auth0
+* **API:** TMDB API
+* **HTTP Client:** Axios
+
+---
+
+## 🔐 Authentication (Auth0)
+
+* Users can securely log in and log out
+* Watchlist functionality is tied to authenticated users
+* Protected features (like adding to watchlist) require login
+* Integrated using `@auth0/auth0-react`
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/your-username/movieverse.git
+cd movieverse
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Create ****`.env`**** file**
+
+```env
+VITE_BASE_URL=https://api.themoviedb.org
+VITE_TMDB_API_KEY=your_api_key_here
+
+# Auth0 Config
+VITE_AUTH0_DOMAIN=your-auth0-domain
+VITE_AUTH0_CLIENT_ID=your-client-id
+```
+
+4. **Run the app**
+
+```bash
+npm run dev
+```
+
+---
+
+## 📌 Future Improvements
+
+* 🎭 Genre-based filtering
+* 📊 Pagination / Infinite scroll
+* 🌙 Dark mode
+* 🎯 Personalized recommendations
+* ☁️ Move watchlist from localStorage → database
+
+---
