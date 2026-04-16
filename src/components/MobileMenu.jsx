@@ -26,8 +26,13 @@ const MobileMenu = ({ active, setActive }) => {
         </button>
         {isAuthenticated ? (
           <div className="flex flex-col gap-2 px-2">
-            <img className="max-w-10 max-h-10 rounded-full" src={user?.picture} alt="" srcset="" />
-            <NavLinks onClick={()=>setActive(false)}/>
+            <img
+              className="max-w-10 max-h-10 rounded-full"
+              src={user?.picture}
+              alt=""
+              srcset=""
+            />
+            <NavLinks onClick={() => setActive(false)} />
             <button
               onClick={() => {
                 logout({ logoutParams: { returnTo: window.location.origin } });
@@ -39,7 +44,7 @@ const MobileMenu = ({ active, setActive }) => {
           </div>
         ) : (
           <div className="flex flex-col gap-2 px-2">
-            <NavLinks />
+            <NavLinks onClick={() => setActive(false)} />
             <button
               onClick={() => {
                 loginWithRedirect();
